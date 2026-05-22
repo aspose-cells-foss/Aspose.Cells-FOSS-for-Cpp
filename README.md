@@ -76,7 +76,7 @@ int main() {
 
 ## License
 
-MIT. See [License/LICENSE.txt](https://github.com/aspose-cells-foss/Aspose.Cells-FOSS-for-Cpp/blob/master/License/LICENSE.txt).
+MIT. See [License/LICENSE.txt](https://github.com/aspose-cells-foss/Aspose.Cells-FOSS-for-Cpp/blob/main/License/LICENSE.txt).
 
 ## Support
 
