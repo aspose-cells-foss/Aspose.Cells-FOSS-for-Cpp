@@ -1,0 +1,3 @@
+add_executable(porter_smoke cell_value_test.cpp)
+target_link_libraries(porter_smoke PRIVATE aspose_cells_foss)
+add_test(NAME porter_smoke COMMAND porter_smoke)

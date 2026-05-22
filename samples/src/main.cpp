@@ -1,29 +1,13 @@
-# Aspose.Cells FOSS for C++
+#include <iostream>
+#include <chrono>
+#include <cstdint>
+#include <filesystem>
+#include <fstream>
+#include <cctype>
+#include <string>
+#include <string_view>
+#include <vector>
 
-Aspose.Cells FOSS is an open-source C++ library for creating, loading, editing, and saving Excel `.xlsx` workbooks without requiring Microsoft Excel.
-
-## Highlights
-
-- Aspose.Cells-compatible API surface for common XLSX scenarios
-- `.xlsx` load/save from file paths and streams
-- Cell values, formulas, styles, merges, and number formats
-- Conditional formatting, data validation, hyperlinks, names, comments
-
-## How to build
-
-```bash
-cd samples
-mkdir build
-cd build
-cmake ..
-cmake --build .
-```
-
-## Quick Start
-
-### Create, style, and save a workbook
-
-```cpp
 #include "aspose/cells_foss/Workbook.h"
 #include "aspose/cells_foss/WorksheetCollection.h"
 #include "aspose/cells_foss/Worksheet.h"
@@ -35,6 +19,19 @@ cmake --build .
 using namespace Aspose::Cells_FOSS;
 
 int main() {
+    auto root = std::filesystem::path(ASPOSE_CELLS_FOSS_SAMPLES_OUTPUT_DIR);
+    if (!std::filesystem::exists(root)) {
+        std::filesystem::create_directories(root);
+    }
+
+    //Workbook workbook;
+    //auto cell = workbook.GetWorksheets()[0].GetCells()["A1"];
+    //cell.PutValue("Hello World");
+    //std::string output = (root / "hello-world.xlsx").string();
+    //workbook.Save(output);
+
+    //std::cout << "Hello world done." << std::endl;
+
     Workbook workbook;
     Worksheet& sheet = workbook.GetWorksheets()[0];
 
@@ -58,26 +55,6 @@ int main() {
     sheet.GetCells()["B1"].SetStyle(headerStyle);
 
     workbook.Save("products.xlsx");
+
     return 0;
 }
-
-```
-
-## Supported Areas
-
-- Workbook and worksheet management
-- Cells and formulas
-- Style model (font, fill, borders, alignment, number formats)
-- Worksheet settings (visibility, zoom, RTL, gridlines, protection)
-- Hyperlinks and defined names
-- Data validation and conditional formatting
-- Page setup and print-related settings
-- Document properties
-
-## License
-
-MIT. See [License/LICENSE.txt](https://github.com/aspose-cells-foss/Aspose.Cells-FOSS-for-Cpp/blob/master/License/LICENSE.txt).
-
-## Support
-
-- Issues: <https://github.com/aspose-cells-foss/Aspose.Cells-FOSS-for-Cpp/issues>
