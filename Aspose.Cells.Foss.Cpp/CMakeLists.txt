@@ -8,6 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(cmake/toolchain-detect.cmake)
 
 option(PORTER_SANITIZE "Enable sanitizer (address/undefined)" "")
+option(ASPOSE_CELLS_FOSS_BUILD_SHARED "Build Aspose.Cells.FOSS as a shared library" OFF)
 
 if(PORTER_SANITIZE STREQUAL "address")
     if(MSVC)
@@ -28,8 +29,17 @@ endif()
 file(GLOB_RECURSE ASPOSE_CELLS_FOSS_SOURCES CONFIGURE_DEPENDS
     src/*.cpp
 )
-add_library(aspose_cells_foss STATIC ${ASPOSE_CELLS_FOSS_SOURCES})
+set(aspose_cells_foss_library_type STATIC)
+if(ASPOSE_CELLS_FOSS_BUILD_SHARED)
+    set(aspose_cells_foss_library_type SHARED)
+endif()
+
+add_library(aspose_cells_foss ${aspose_cells_foss_library_type} ${ASPOSE_CELLS_FOSS_SOURCES})
 target_include_directories(aspose_cells_foss PUBLIC include)
+
+if(WIN32 AND ASPOSE_CELLS_FOSS_BUILD_SHARED)
+    set_target_properties(aspose_cells_foss PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif()
 
 enable_testing()
 add_subdirectory(tests)
