@@ -15,6 +15,7 @@ dependency-free, header-and-source C++17 library with no external runtime depend
 - [At a Glance](#at-a-glance)
 - [Key Capabilities](#key-capabilities)
 - [Installation](#installation)
+- [Dependencies](#dependencies)
 - [Quick Start](#quick-start)
 - [Additional Examples](#additional-examples)
 - [API Reference](#api-reference)
@@ -26,33 +27,36 @@ dependency-free, header-and-source C++17 library with no external runtime depend
 ## At a Glance
 
 ```mermaid
-flowchart TD
+%%{init: {"htmlLabels": false, "flowchart": {"htmlLabels": false, "nodeSpacing": 22, "rankSpacing": 26, "padding": 10, "useMaxWidth": true, "wrappingWidth": 400}}}%%
+flowchart LR
   subgraph StartingPoints["Starting Points"]
     direction TB
-    i1["An existing .xlsx workbook (file path or in-memory stream)"]
+    i1["An existing .xlsx<br/>workbook (file<br/>path or in-memory<br/>stream)"]
   end
-  PRODUCT["Aspose.Cells FOSS for C++"]
+  PRODUCT["Aspose.Cells<br/>FOSS for C++"]
   subgraph Capabilities["Core Capabilities"]
-    direction LR
-    subgraph capl[" "]
-      direction TB
-      c1["Create or load .xlsx workbooks"]
-      c2["Read and write cell values and formulas"]
-      c3["Apply cell styling: fonts, fills, borders, alignment"]
-      c4["Merge cell ranges and format numbers"]
-      c5["Control worksheet view and protection settings"]
-    end
+    direction TB
     subgraph capr[" "]
       direction TB
-      c6["Apply conditional formatting and data validation"]
-      c7["Manage hyperlinks and defined names"]
-      c8["Configure page setup and print settings"]
-      c9["Read and write document properties"]
+      c6["Apply conditional<br/>formatting and<br/>data validation"]
+      c7["Manage<br/>hyperlinks and<br/>defined names"]
+      c8["Configure page<br/>setup and print<br/>settings"]
+      c9["Read and write<br/>document<br/>properties"]
+      c6 ~~~ c7 ~~~ c8 ~~~ c9
+    end
+    subgraph capl[" "]
+      direction TB
+      c1["Create or load<br/>.xlsx workbooks"]
+      c2["Read and write<br/>cell values and<br/>formulas"]
+      c3["Apply cell<br/>styling: fonts,<br/>fills, borders,<br/>alignment"]
+      c4["Merge cell<br/>ranges and<br/>format numbers"]
+      c5["Control worksheet<br/>view and<br/>protection settings"]
+      c1 ~~~ c2 ~~~ c3 ~~~ c4 ~~~ c5
     end
   end
   subgraph Outputs["Outputs"]
     direction TB
-    o1[".xlsx workbook (file path or binary stream)"]
+    o1[".xlsx workbook<br/>(file path or<br/>binary stream)"]
   end
   StartingPoints --> PRODUCT --> Capabilities --> Outputs
 ```
@@ -121,6 +125,17 @@ a plain, dependency-free CMake target and targets C++17 on MSVC, GCC, and Clang 
 add_subdirectory(Aspose.Cells.Foss.Cpp)
 target_link_libraries(your_target PRIVATE aspose_cells_foss)
 ```
+
+## Dependencies
+
+### Required Package Dependencies
+
+No required third-party package dependencies.
+
+### Native and System Requirements
+
+- Requires C++ `17`.
+- Requires CMake 3.16 or later.
 
 ## Quick Start
 
